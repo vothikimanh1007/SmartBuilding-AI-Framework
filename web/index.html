@@ -48,6 +48,24 @@
             margin-right: 8px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* Custom Range Slider */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #38bdf8;
+            cursor: pointer;
+            margin-top: -8px;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #475569;
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col items-center justify-center relative py-12">
@@ -107,39 +125,79 @@
         <!-- ========================================== -->
         <!-- PHẦN 2: LIVE AI DEMONSTRATION (INTERACTIVE)-->
         <!-- ========================================== -->
-        <div class="glass-panel rounded-3xl p-8 border-t-4 border-t-sky-500">
+        <div class="glass-panel rounded-3xl p-8 border-t-4 border-t-sky-500 mb-8">
             <h2 class="text-2xl font-bold mb-2 flex items-center">
                 <span class="mr-2">⚡</span> Live Edge AI Demonstration
             </h2>
-            <p class="text-slate-400 mb-6 text-sm">Input real-time sensor data to execute the predictive inference pipeline directly through our Backend API.</p>
+            <p class="text-slate-400 mb-6 text-sm">Enter environmental and temporal parameters below to simulate real-time IoT sensor readings. Our Backend API will process this data to forecast the short-term energy load.</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Cột nhập liệu -->
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-1">Indoor Temperature (T1) °C</label>
-                        <input type="number" id="temp" value="22.5" step="0.1" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition-colors">
+                <div class="space-y-5 bg-slate-800/30 p-6 rounded-2xl border border-slate-700/50">
+                    <h3 class="text-sm font-semibold text-sky-400 uppercase tracking-wider border-b border-slate-700 pb-2">IoT Sensor Inputs</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-1">Indoor Temp (T1) °C</label>
+                            <input type="number" id="temp" value="24.5" step="0.1" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-2.5 text-white focus:outline-none focus:border-sky-500 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-1">Indoor Humid (RH_1) %</label>
+                            <input type="number" id="humid" value="45.0" step="0.1" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-2.5 text-white focus:outline-none focus:border-sky-500 transition-colors">
+                        </div>
                     </div>
+
                     <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-1">Indoor Humidity (RH_1) %</label>
-                        <input type="number" id="humid" value="45.0" step="0.1" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition-colors">
+                        <label class="block text-xs font-medium text-slate-400 mb-1">Outdoor Temp (T_out) °C</label>
+                        <input type="number" id="t_out" value="32.0" step="0.1" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-2.5 text-white focus:outline-none focus:border-sky-500 transition-colors">
+                        <p class="text-[10px] text-slate-500 mt-1">Affects HVAC thermal load prediction.</p>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-end mb-1">
+                            <label class="block text-xs font-medium text-slate-400">Time of Day (Hour)</label>
+                            <span id="hour-display" class="text-sky-400 font-bold">18:00</span>
+                        </div>
+                        <input type="range" id="hour" min="0" max="23" value="18" class="w-full appearance-none bg-transparent" oninput="document.getElementById('hour-display').innerText = this.value.padStart(2, '0') + ':00'">
+                        <p class="text-[10px] text-slate-500 mt-1">Crucial for identifying human behavioral patterns.</p>
                     </div>
                     
-                    <button id="run-btn" class="w-full mt-2 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold py-3 px-4 rounded-lg hover:from-sky-400 hover:to-indigo-500 transition-all shadow-lg shadow-indigo-500/30 flex justify-center items-center">
-                        Execute Prediction
+                    <button id="run-btn" class="w-full mt-4 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold py-3 px-4 rounded-xl hover:from-sky-400 hover:to-indigo-500 transition-all shadow-lg shadow-indigo-500/30 flex justify-center items-center">
+                        Execute AI Inference
                     </button>
                 </div>
 
                 <!-- Cột hiển thị kết quả -->
-                <div class="bg-slate-900/80 rounded-xl p-6 border border-slate-700 flex flex-col justify-center">
-                    <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">Inference Results</h3>
+                <div class="bg-slate-900/80 rounded-2xl p-6 border border-slate-700 flex flex-col">
+                    <h3 class="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">Predictive Output</h3>
                     
-                    <div id="result-container" class="space-y-4">
-                        <p class="text-slate-500 italic text-sm">Awaiting input... Press Execute to run the models.</p>
+                    <div id="result-container" class="space-y-4 flex-grow flex flex-col justify-center">
+                        <p class="text-slate-500 italic text-sm text-center">Awaiting data input...<br>Press Execute to run the models.</p>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- ========================================== -->
+        <!-- PHẦN 3: EXPLAINABILITY (Ý NGHĨA HỆ THỐNG)  -->
+        <!-- ========================================== -->
+        <div class="glass-panel rounded-3xl p-8 mb-12">
+            <h3 class="text-xl font-bold mb-4 flex items-center text-slate-200">
+                <svg class="w-6 h-6 mr-2 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                System Insights & Actionable Output
+            </h3>
+            <div class="grid md:grid-cols-2 gap-6 text-sm text-slate-300 leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-white mb-2 border-b border-slate-700 pb-1">What does the Output mean?</h4>
+                    <p>The resulting value (in <strong>Watt-hours, Wh</strong>) represents the highly probable electrical load required by the building's appliances and HVAC systems for the <strong>upcoming 10-minute interval</strong>. By using cyclical time encoding (Sine/Cosine of the hour) and environmental deltas, the AI recognizes non-linear human behavioral patterns.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-2 border-b border-slate-700 pb-1">Why is this technically significant?</h4>
+                    <p>Traditional Building Energy Management Systems (BEMS) are reactive. This framework enables <strong>Proactive Control (Peak Shaving)</strong>. If the Deep ANN predicts a sudden surge in energy demand at 18:00, the BEMS can automatically pre-cool the building at 17:30 or dispatch stored battery power, drastically reducing operational costs and grid stress.</p>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- ========================================== -->
@@ -150,24 +208,29 @@
             const btn = document.getElementById('run-btn');
             const resultContainer = document.getElementById('result-container');
             
-            const t1 = document.getElementById('temp').value;
-            const rh1 = document.getElementById('humid').value;
+            // Lấy toàn bộ 4 biến từ giao diện
+            const t1 = parseFloat(document.getElementById('temp').value);
+            const rh1 = parseFloat(document.getElementById('humid').value);
+            const t_out = parseFloat(document.getElementById('t_out').value);
+            const hour = parseInt(document.getElementById('hour').value);
 
-            // 1. Trạng thái Đang tải (Loading)
             btn.disabled = true;
             btn.innerHTML = '<span class="loader"></span> Processing...';
-            resultContainer.innerHTML = '<p class="text-sky-400 animate-pulse text-sm">Connecting to Inference Server...</p>';
+            resultContainer.innerHTML = '<div class="flex justify-center items-center h-full"><p class="text-sky-400 animate-pulse text-sm">Transmitting data to Inference Server...</p></div>';
 
             try {
-                // [!] QUAN TRỌNG: Thay đổi đoạn 'smart-building-ai-api.onrender.com' 
-                // bằng đúng cái URL mà hệ thống Render đã cấp cho bạn. Đừng quên giữ lại chữ '/predict' ở cuối.
-                const backendURL = 'https://dashboard.render.com/web/srv-d7mcpt67r5hc7384bnu0'; 
+                // [!] Thay URL thật của bạn vào đây
+                const backendURL = 'https://smart-building-ai-api.onrender.com/predict'; 
                 
-                // GỌI API THỰC TẾ
                 const response = await fetch(backendURL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ T1: parseFloat(t1), RH_1: parseFloat(rh1), T_out: 15.0, hour: 18 })
+                    body: JSON.stringify({ 
+                        T1: t1, 
+                        RH_1: rh1, 
+                        T_out: t_out, 
+                        hour: hour 
+                    })
                 });
 
                 if (!response.ok) throw new Error("Network response was not ok");
@@ -177,35 +240,79 @@
                     throw new Error(data.message);
                 }
 
-                // 2. Hiển thị kết quả thành công từ API
+                // TÍNH TOÁN CÁC CHỈ SỐ PHÂN TÍCH ĐỘNG (DYNAMIC INSIGHTS)
+                const thermalDelta = Math.abs(t1 - t_out).toFixed(1);
+                const avgPred = ((data.xgboost_prediction + data.ann_prediction) / 2).toFixed(2);
+                
+                // Logic đưa ra khuyến nghị giả lập dựa trên mức dự báo
+                let actionableAdvice = "";
+                let adviceColor = "";
+                if (avgPred > 150) {
+                    actionableAdvice = "High load predicted. Activating peak-shaving protocol (Pre-cooling zones).";
+                    adviceColor = "text-red-400 bg-red-900/20 border-red-800/50";
+                } else if (avgPred > 80) {
+                    actionableAdvice = "Moderate load. Maintaining standard operational HVAC setpoints.";
+                    adviceColor = "text-amber-400 bg-amber-900/20 border-amber-800/50";
+                } else {
+                    actionableAdvice = "Low load predicted. Initiating energy-saving mode (Dimming/Standby).";
+                    adviceColor = "text-emerald-400 bg-emerald-900/20 border-emerald-800/50";
+                }
+
+                const timeStr = hour.toString().padStart(2, '0') + ':00';
+
+                // HIỂN THỊ KẾT QUẢ VÀ PHẦN GIẢI THÍCH ĐỘNG
                 resultContainer.innerHTML = `
-                    <div class="flex justify-between items-center bg-slate-800 p-3 rounded-lg border border-slate-600">
-                        <span class="text-slate-300 font-medium">XGBoost (Ensemble)</span>
-                        <span class="text-emerald-400 font-bold text-xl">${data.xgboost_prediction} Wh</span>
+                    <div class="flex justify-between items-center bg-slate-800 p-4 rounded-xl border border-slate-600 mb-3 hover:border-emerald-500 transition-colors">
+                        <div>
+                            <span class="block text-slate-300 font-medium text-sm mb-1">XGBoost (Ensemble)</span>
+                            <span class="text-xs text-slate-500">Tree-based Regression</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-emerald-400 font-black text-2xl">${data.xgboost_prediction}</span>
+                            <span class="text-slate-400 text-sm">Wh</span>
+                        </div>
                     </div>
-                    <div class="flex justify-between items-center bg-slate-800 p-3 rounded-lg border border-slate-600">
-                        <span class="text-slate-300 font-medium">Deep ANN (Neural Net)</span>
-                        <span class="text-purple-400 font-bold text-xl">${data.ann_prediction} Wh</span>
+                    
+                    <div class="flex justify-between items-center bg-slate-800 p-4 rounded-xl border border-slate-600 hover:border-purple-500 transition-colors mb-4">
+                        <div>
+                            <span class="block text-slate-300 font-medium text-sm mb-1">Deep ANN (Neural Net)</span>
+                            <span class="text-xs text-slate-500">Multi-layer Perceptron</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-purple-400 font-black text-2xl">${data.ann_prediction}</span>
+                            <span class="text-slate-400 text-sm">Wh</span>
+                        </div>
                     </div>
-                    <p class="text-xs text-slate-500 mt-2">Predicted energy load for the next 10-minute interval.</p>
+
+                    <!-- DYNAMIC REAL-TIME INSIGHT -->
+                    <div class="p-4 bg-sky-900/20 rounded-xl border border-sky-800/50">
+                        <h4 class="text-xs font-bold text-sky-300 mb-2 flex items-center uppercase tracking-wider">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Contextual Interpretation
+                        </h4>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                            At <strong>${timeStr}</strong>, with a thermal delta of <strong>${thermalDelta}°C</strong> between indoor and outdoor environments, the estimated power demand averages <strong>${avgPred} Wh</strong> for the next 10 minutes.
+                        </p>
+                        <p class="text-xs font-semibold p-2 rounded border ${adviceColor}">
+                            💡 BEMS Action: ${actionableAdvice}
+                        </p>
+                    </div>
                 `;
             } catch (error) {
-                // 3. Xử lý lỗi (Nếu Backend sập hoặc sai URL)
                 resultContainer.innerHTML = `
-                    <div class="bg-red-900/30 border border-red-700 text-red-400 p-3 rounded-lg text-sm">
-                        <strong>Connection Error:</strong> Could not reach the inference server. Vui lòng đảm bảo Render server đang hoạt động.
+                    <div class="bg-red-900/30 border border-red-700 text-red-400 p-4 rounded-xl text-sm h-full flex items-center">
+                        <p><strong>Connection Error:</strong> Could not reach the inference server. Vui lòng kiểm tra Render server của bạn.</p>
                     </div>
                 `;
                 console.error("Error calling API:", error);
             } finally {
-                // Khôi phục nút bấm
                 btn.disabled = false;
-                btn.innerHTML = 'Execute Prediction';
+                btn.innerHTML = 'Execute AI Inference';
             }
         });
 
         // ==========================================
-        // ANTIGRAVITY CANVAS SCRIPT (GIỮ NGUYÊN)
+        // ANTIGRAVITY CANVAS SCRIPT 
         // ==========================================
         const canvas = document.getElementById('antigravity-canvas');
         const ctx = canvas.getContext('2d');
