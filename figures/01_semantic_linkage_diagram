@@ -1,0 +1,14 @@
+// Semantic Linkage Diagram
+digraph {
+	node [fontname=Arial fontsize=12]
+	rankdir=LR size="12,8"
+	B [label="Bibliometrics (n=1043)
+[Trend Identification]" color=lightblue shape=ellipse]
+	S [label="SEM Analysis
+[Contextual Readiness]" color=lightyellow shape=ellipse]
+	A [label="AI Framework (XGBoost/ANN)
+[Technical Execution]" color=lightgreen shape=ellipse]
+	B -> S
+	S -> A
+	A -> B
+}

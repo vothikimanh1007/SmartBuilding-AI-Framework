@@ -1,0 +1,12 @@
+// Model Validation
+digraph {
+	node [fontname=Arial fontsize=11 shape=rect]
+	rankdir=TB
+	In [label="Raw IoT Data (Sensors/Weather)"]
+	FE [label="Feature Engineering (Lags, Cyclical Encodings)"]
+	Train [label="Multi-Model Training (XGBoost/Deep ANN)"]
+	Val [label="Cross-Validation (R2 Optimization)"]
+	In -> FE
+	FE -> Train
+	Train -> Val
+}
