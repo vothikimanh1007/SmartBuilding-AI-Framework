@@ -1,0 +1,13 @@
+# ==============================================================================
+# RENDER DEPLOYMENT BLUEPRINT
+# Tệp này giúp Render tự động cài đặt máy chủ Python và khởi chạy FastAPI
+# ==============================================================================
+
+services:
+  - type: web
+    name: smart-building-ai-api
+    env: python
+    region: singapore # Hoặc oregon/frankfurt tùy chọn
+    plan: free        # Sử dụng gói miễn phí của Render
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app:app --host 0.0.0.0 --port $PORT"
