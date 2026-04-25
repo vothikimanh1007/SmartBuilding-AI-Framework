@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Building AI Framework</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc; /* Slate 50 */
+            font-family: 'Inter', sans-serif;
+        }
+        #antigravity-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.8;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Antigravity Canvas Background -->
+    <canvas id="antigravity-canvas"></canvas>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center p-6 relative z-10 mt-12 mb-12">
+        <div class="max-w-4xl w-full glass-panel rounded-3xl p-8 md:p-12">
+            
+            <div class="flex items-center space-x-3 mb-6">
+                <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sky-300 bg-sky-900/50 rounded-full border border-sky-700"> 2026</span>
+                <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-purple-300 bg-purple-900/50 rounded-full border border-purple-700">Data Engineering</span>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+                An Integrated <span class="gradient-text">Data-Driven Framework</span> for Smart Building Energy Forecasting
+            </h1>
+            
+            <p class="text-slate-300 text-lg md:text-xl mb-8 leading-relaxed">
+                Bridging the gap between theoretical adoption models and technical predictive execution. Our multi-model framework leverages Structural Equation Modeling (SEM) to engineer high-accuracy Deep Learning models for IoT environments.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 hover:bg-slate-700/50 transition duration-300">
+                    <div class="text-sky-400 mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">1,043+</h3>
+                    <p class="text-sm text-slate-400">WoS Papers Analyzed via Semantic Bibliometrics</p>
+                </div>
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 hover:bg-slate-700/50 transition duration-300">
+                    <div class="text-purple-400 mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">R² = 0.9959</h3>
+                    <p class="text-sm text-slate-400">Record accuracy utilizing Deep ANN & XGBoost architectures</p>
+                </div>
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 hover:bg-slate-700/50 transition duration-300">
+                    <div class="text-emerald-400 mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">UCI Validated</h3>
+                    <p class="text-sm text-slate-400">Cross-verified on Time-Series & Static benchmarks</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="https://github.com/vothikimanh1007/SmartBuilding-AI-Framework" target="_blank" class="flex items-center justify-center px-6 py-3 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-200 transition-colors duration-200">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+                    View Source on GitHub
+                </a>
+                <button onclick="alert('Ready to deploy! Just link your GitHub repo to Vercel.')" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold rounded-xl hover:from-sky-400 hover:to-indigo-500 transition-all duration-200 shadow-lg shadow-indigo-500/30">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Deploy to Vercel
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Antigravity Canvas Script -->
+    <script>
+        const canvas = document.getElementById('antigravity-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+        // The "Antigravity Force Field" repels objects away from the cursor
+        const mouse = { x: -1000, y: -1000, radius: 180 };
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        window.addEventListener('mouseleave', () => {
+            mouse.x = -1000;
+            mouse.y = -1000;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = height + Math.random() * 200; // Start below screen
+                this.size = Math.random() * 3 + 1;
+                // Natural upward velocity
+                this.baseVy = -(Math.random() * 1.5 + 0.5); 
+                this.vy = this.baseVy;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.color = `hsla(${Math.random() * 60 + 200}, 100%, 70%, ${Math.random() * 0.6 + 0.2})`;
+            }
+
+            update() {
+                // Apply movement
+                this.y += this.vy;
+                this.x += this.vx;
+
+                // Mouse Repulsion logic
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < mouse.radius) {
+                    const forceDirectionX = dx / distance;
+                    const forceDirectionY = dy / distance;
+                    const force = (mouse.radius - distance) / mouse.radius;
+                    // Push particles away
+                    this.vx -= forceDirectionX * force * 0.8;
+                    this.vy -= forceDirectionY * force * 0.8;
+                } else {
+                    // Slowly return to normal trajectory
+                    this.vy = this.vy * 0.95 + this.baseVy * 0.05;
+                    this.vx = this.vx * 0.95; 
+                }
+
+                // Wrap around when out of screen bounds
+                if (this.y < -20 || this.x < -20 || this.x > width + 20) {
+                    this.y = height + 20;
+                    this.x = Math.random() * width;
+                    this.vy = this.baseVy;
+                    this.vx = 0;
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            const numberOfParticles = (width * height) / 7000; // Responsive density
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+        init();
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
