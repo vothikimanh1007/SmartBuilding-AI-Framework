@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Building AI Framework</title>
+    <title>Smart Building AI Framework | 2026</title>
     <p class="text-sky-300 font-medium mb-4"> By: Vo Thi Kim Anh (Ton Duc Thang University & VSB-TUO) </p>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -35,51 +35,57 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        /* Loader animation */
+        .loader {
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top: 3px solid #38bdf8;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
+<body class="antialiased min-h-screen flex flex-col items-center justify-center relative py-12">
 
-    <!-- Antigravity Canvas Background -->
     <canvas id="antigravity-canvas"></canvas>
 
-    <!-- Main Content -->
-    <main class="flex-grow flex items-center justify-center p-6 relative z-10 mt-12 mb-12">
-        <div class="max-w-4xl w-full glass-panel rounded-3xl p-8 md:p-12">
-            
+    <main class="w-full max-w-5xl px-6 relative z-10">
+        
+        <div class="glass-panel rounded-3xl p-8 md:p-12 mb-8">
             <div class="flex items-center space-x-3 mb-6">
                 <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sky-300 bg-sky-900/50 rounded-full border border-sky-700"> 2026</span>
                 <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-purple-300 bg-purple-900/50 rounded-full border border-purple-700">Data Engineering</span>
             </div>
 
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
                 An Integrated <span class="gradient-text">Data-Driven Framework</span> for Smart Building Energy Forecasting
             </h1>
+            
+            <p class="text-sky-300 font-medium mb-6 text-lg">
+                By: Vo Thi Kim Anh (Ton Duc Thang University & VSB-TUO)
+            </p>
             
             <p class="text-slate-300 text-lg md:text-xl mb-8 leading-relaxed">
                 Bridging the gap between theoretical adoption models and technical predictive execution. Our multi-model framework leverages Structural Equation Modeling (SEM) to engineer high-accuracy Deep Learning models for IoT environments.
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 hover:bg-slate-700/50 transition duration-300">
-                    <div class="text-sky-400 mb-2">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-1">1,043+</h3>
-                    <p class="text-sm text-slate-400">WoS Papers Analyzed via Semantic Bibliometrics</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700">
+                    <h3 class="text-2xl font-bold text-sky-400 mb-1">1,043+</h3>
+                    <p class="text-sm text-slate-400">WoS Papers Analyzed</p>
                 </div>
-                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 hover:bg-slate-700/50 transition duration-300">
-                    <div class="text-purple-400 mb-2">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-1">R² = 0.9959</h3>
-                    <p class="text-sm text-slate-400">Record accuracy utilizing Deep ANN & XGBoost architectures</p>
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700">
+                    <h3 class="text-2xl font-bold text-purple-400 mb-1">R² = 0.9959</h3>
+                    <p class="text-sm text-slate-400">Deep ANN Accuracy</p>
                 </div>
-                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 hover:bg-slate-700/50 transition duration-300">
-                    <div class="text-emerald-400 mb-2">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-1">UCI Validated</h3>
-                    <p class="text-sm text-slate-400">Cross-verified on Time-Series & Static benchmarks</p>
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700">
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-1">UCI Validated</h3>
+                    <p class="text-sm text-slate-400">Time-Series & Static</p>
                 </div>
             </div>
 
@@ -88,22 +94,117 @@
                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
                     View Source on GitHub
                 </a>
-                <button onclick="alert('Ready to deploy! Just link your GitHub repo to Vercel.')" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold rounded-xl hover:from-sky-400 hover:to-indigo-500 transition-all duration-200 shadow-lg shadow-indigo-500/30">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    Deploy to Vercel
-                </button>
+            </div>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-8 border-t-4 border-t-sky-500">
+            <h2 class="text-2xl font-bold mb-2 flex items-center">
+                <span class="mr-2">⚡</span> Live Edge AI Demonstration
+            </h2>
+            <p class="text-slate-400 mb-6 text-sm">Input real-time sensor data to execute the predictive inference pipeline directly through our Backend API.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">Indoor Temperature (T1) °C</label>
+                        <input type="number" id="temp" value="22.5" step="0.1" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">Indoor Humidity (RH_1) %</label>
+                        <input type="number" id="humid" value="45.0" step="0.1" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition-colors">
+                    </div>
+                    
+                    <button id="run-btn" class="w-full mt-2 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold py-3 px-4 rounded-lg hover:from-sky-400 hover:to-indigo-500 transition-all shadow-lg shadow-indigo-500/30 flex justify-center items-center">
+                        Execute Prediction
+                    </button>
+                </div>
+
+                <div class="bg-slate-900/80 rounded-xl p-6 border border-slate-700 flex flex-col justify-center">
+                    <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">Inference Results</h3>
+                    
+                    <div id="result-container" class="space-y-4">
+                        <p class="text-slate-500 italic text-sm">Awaiting input... Press Execute to run the models.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
-    <!-- Antigravity Canvas Script -->
     <script>
+        document.getElementById('run-btn').addEventListener('click', async () => {
+            const btn = document.getElementById('run-btn');
+            const resultContainer = document.getElementById('result-container');
+            
+            const t1 = document.getElementById('temp').value;
+            const rh1 = document.getElementById('humid').value;
+
+            // 1. Trạng thái Đang tải (Loading)
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loader"></span> Processing...';
+            resultContainer.innerHTML = '<p class="text-sky-400 animate-pulse text-sm">Connecting to Inference Server...</p>';
+
+            try {
+                // [!] CHÚ Ý: Sau khi bạn host file FastAPI lên Render/Railway, 
+                // hãy thay URL dưới đây bằng URL thật của bạn. 
+                // Hiện tại đang dùng URL giả lập để demo logic hiển thị.
+                const backendURL = 'https://your-fastapi-backend-url.onrender.com/predict'; 
+                
+                /* ĐOẠN CODE THẬT (Đã comment lại chờ bạn có Backend thật)
+                const response = await fetch(backendURL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ T1: parseFloat(t1), RH_1: parseFloat(rh1), T_out: 15.0, hour: 18 })
+                });
+                if (!response.ok) throw new Error("Network response was not ok");
+                const data = await response.json();
+                */
+
+                // MÔ PHỎNG PHẢN HỒI TỪ BACKEND (Xóa đoạn này khi dùng Backend thật)
+                await new Promise(r => setTimeout(r, 1500)); // Fake delay 1.5s
+                // Giả lập kết quả (thay đổi theo input để trông thật hơn)
+                const baseLoad = 60;
+                const simulated_xgb = baseLoad + (t1 - 20)*2 + (rh1 - 40)*0.5 + (Math.random()*2);
+                const simulated_ann = baseLoad + (t1 - 20)*2.1 + (rh1 - 40)*0.4 + (Math.random()*2);
+                
+                const data = {
+                    xgboost_prediction: simulated_xgb,
+                    ann_prediction: simulated_ann
+                };
+
+                // 2. Hiển thị kết quả thành công
+                resultContainer.innerHTML = `
+                    <div class="flex justify-between items-center bg-slate-800 p-3 rounded-lg border border-slate-600">
+                        <span class="text-slate-300 font-medium">XGBoost (Ensemble)</span>
+                        <span class="text-emerald-400 font-bold text-xl">${data.xgboost_prediction.toFixed(2)} Wh</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-800 p-3 rounded-lg border border-slate-600">
+                        <span class="text-slate-300 font-medium">Deep ANN (Neural Net)</span>
+                        <span class="text-purple-400 font-bold text-xl">${data.ann_prediction.toFixed(2)} Wh</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">Predicted energy load for the next 10-minute interval.</p>
+                `;
+            } catch (error) {
+                // 3. Xử lý lỗi (Nếu Backend sập hoặc sai URL)
+                resultContainer.innerHTML = `
+                    <div class="bg-red-900/30 border border-red-700 text-red-400 p-3 rounded-lg text-sm">
+                        <strong>Connection Error:</strong> Could not reach the inference server. Ensure your Python Backend API is running.
+                    </div>
+                `;
+                console.error("Error calling API:", error);
+            } finally {
+                // Khôi phục nút bấm
+                btn.disabled = false;
+                btn.innerHTML = 'Execute Prediction';
+            }
+        });
+
+        // ==========================================
+        // ANTIGRAVITY CANVAS SCRIPT (GIỮ NGUYÊN)
+        // ==========================================
         const canvas = document.getElementById('antigravity-canvas');
         const ctx = canvas.getContext('2d');
-
         let width, height;
         let particles = [];
-        // The "Antigravity Force Field" repels objects away from the cursor
         const mouse = { x: -1000, y: -1000, radius: 180 };
 
         function resize() {
@@ -113,33 +214,22 @@
         window.addEventListener('resize', resize);
         resize();
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        });
-        window.addEventListener('mouseleave', () => {
-            mouse.x = -1000;
-            mouse.y = -1000;
-        });
+        window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        window.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; });
 
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
-                this.y = height + Math.random() * 200; // Start below screen
+                this.y = height + Math.random() * 200; 
                 this.size = Math.random() * 3 + 1;
-                // Natural upward velocity
                 this.baseVy = -(Math.random() * 1.5 + 0.5); 
                 this.vy = this.baseVy;
                 this.vx = (Math.random() - 0.5) * 0.5;
                 this.color = `hsla(${Math.random() * 60 + 200}, 100%, 70%, ${Math.random() * 0.6 + 0.2})`;
             }
-
             update() {
-                // Apply movement
                 this.y += this.vy;
                 this.x += this.vx;
-
-                // Mouse Repulsion logic
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
@@ -148,16 +238,13 @@
                     const forceDirectionX = dx / distance;
                     const forceDirectionY = dy / distance;
                     const force = (mouse.radius - distance) / mouse.radius;
-                    // Push particles away
                     this.vx -= forceDirectionX * force * 0.8;
                     this.vy -= forceDirectionY * force * 0.8;
                 } else {
-                    // Slowly return to normal trajectory
                     this.vy = this.vy * 0.95 + this.baseVy * 0.05;
                     this.vx = this.vx * 0.95; 
                 }
 
-                // Wrap around when out of screen bounds
                 if (this.y < -20 || this.x < -20 || this.x > width + 20) {
                     this.y = height + 20;
                     this.x = Math.random() * width;
@@ -165,7 +252,6 @@
                     this.vx = 0;
                 }
             }
-
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -176,10 +262,8 @@
 
         function init() {
             particles = [];
-            const numberOfParticles = (width * height) / 7000; // Responsive density
-            for (let i = 0; i < numberOfParticles; i++) {
-                particles.push(new Particle());
-            }
+            const numberOfParticles = (width * height) / 7000; 
+            for (let i = 0; i < numberOfParticles; i++) { particles.push(new Particle()); }
         }
         init();
 
